@@ -31,14 +31,11 @@ public class StatementTest {
                 .balanceBeforeOperation(new Amount())
                 .build());
 
-        System.out.println(statement.getStatements().get(1).getBankOperation().getBalanceAfterOperation().getValue());
-
         statement.addStatement(BankOperation.Builder.createNew()
                 .bankOperationType(DEPOSIT)
                 .operationAmount(new Amount(20))
                 .balanceBeforeOperation(statement.getStatements().get(1).getBankOperation().getBalanceAfterOperation())
                 .build());
-        System.out.println(statement.getStatements().get(2).getBankOperation().getBalanceAfterOperation().getValue());
 
         assertEquals(10d,statement.getStatements().get(1).getBankOperation().getBalanceAfterOperation().getValue());
         assertEquals(30d,statement.getStatements().get(2).getBankOperation().getBalanceAfterOperation().getValue());
